@@ -1,0 +1,62 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffdde1; /* Romantic pink background */
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.header_text {
+  font-size: 40px;
+  font-weight: bold;
+  color: #ff6f61; /* Romantic red */
+  margin-bottom: 20px;
+}
+
+.gif_container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #ff6f61; /* Romantic red */
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ff4a4a; /* Darker red on hover */
+}
+
+#noButton {
+  position: absolute;
+  margin-left: 150px;
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 600px) {
+  .header_text {
+    font-size: 30px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
