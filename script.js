@@ -6,7 +6,10 @@ gsap.to('.animate-text', {
     stagger: 0.3,
     ease: 'power2.out'
 });
-
+window.onload = () => {
+    confetti.start();
+    setTimeout(() => confetti.stop(), 5000);
+};
 // Timeline Interaction
 const memories = [
     { img: 'images/event1.jpg', text: 'Our first meeting... and everything changed.' },
