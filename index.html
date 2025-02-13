@@ -1,35 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch My Heart</title>
     <link rel="stylesheet" href="./styles.css">
-    <title>Valentine's Day Surprise</title>
-</head> 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
 <body>
-    <div class="container">
-        <div>
-            <h1 class="header_text">Will You Be My Valentine?</h1>
-        </div>
-        <div class="gif_container">
-            <img src="https://media.giphy.com/media/l0ExncehJzexFpRHq/giphy.gif" alt="Cute animated illustration">
-        </div>
-        <div class="buttons">
-            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
-            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
-        </div>
+    <div class="game-container">
+        <h1 class="header_text">Catch My Heart</h1>
+        <canvas id="gameCanvas"></canvas>
+        <p class="score">Score: <span id="score">0</span></p>
+        <button id="startButton" onclick="startGame()">Start Game</button>
     </div>
 
-    <script>
-        function nextPage() {
-            window.location.href = "yes.html";
-        }
-        
-        function moveButton() {
-            var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 85;
-            var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight) - 48;
-            document.getElementById('noButton').style.left = `${x}px`;
-            document.getElementById('noButton').style.top = `${y}px`;
-        }
-    </script>
-</body> 
+    <script src="script.js"></script>
+</body>
 </html>
