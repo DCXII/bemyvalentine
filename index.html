@@ -5,19 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Catch My Heart</title>
     <link rel="stylesheet" href="./styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Floating Hearts -->
     <div class="floating-hearts">
         <div class="heart"></div>
         <div class="heart"></div>
         <div class="heart"></div>
     </div>
+    
+    <!-- Game Container -->
     <div class="game-container">
-        <h1 class="header_text">Catch My Heart</h1>
+        <h1 class="header_text animate-text">Catch My Heart</h1>
         <canvas id="gameCanvas"></canvas>
-        <p class="score">Score: <span id="score">0</span></p>
-        <button id="startButton" onclick="startGame()">Start Game</button>
+        <p class="score animate-text">Score: <span id="score">0</span></p>
+        <button id="startButton" class="animate-button" onclick="startGame()">Start Game</button>
     </div>
+    
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="./music/background.mp3" type="audio/mp3">
+    </audio>
+    <button class="music-control" onclick="toggleMusic()">🎵</button>
 
     <script src="script.js"></script>
 </body>
