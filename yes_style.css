@@ -1,32 +1,36 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffdde1; /* Romantic pink background */
-  margin: 0;
-  font-family: 'Nunito', sans-serif;
-}
-
-.container {
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff6f91 0%, #ff9472 100%);
+    overflow: hidden;
 }
 
 .header_text {
-  font-size: 50px;
-  font-weight: bold;
-  color: #ff6f61; /* Romantic red */
-  margin-bottom: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 0;
+    animation: pop 1s ease;
+}
+
+.sub_text {
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .gif_container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+    max-width: 80%;
+    margin-top: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-  .header_text {
-    font-size: 30px;
-  }
+@keyframes pop {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
 }
