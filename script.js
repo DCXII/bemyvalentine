@@ -19,7 +19,7 @@ class Heart {
 
     draw() {
         const img = new Image();
-        img.src = './images/heart.png';
+        img.src = 'images/heart.png';
         ctx.drawImage(img, this.x, this.y, this.width, this.height);
     }
 
@@ -30,7 +30,7 @@ class Heart {
 
 function drawBasket() {
     const img = new Image();
-    img.src = './images/basket.png';
+    img.src = 'images/basket.png';
     ctx.drawImage(img, basket.x, basket.y, basket.width, basket.height);
 }
 
