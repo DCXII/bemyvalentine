@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will You Go Out With Me?</title>
-  <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div>
-      <h1 class="header_text">Do you wanna go out with me?</h1>
-      <h1 class="header_text">Are you free tomorrow?</h1>
-    </div>
-    <div class="gif_container">
-      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
-    </div>
-    <div class="buttons">
-      <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
-      <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
-    </div>
-  </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="overlay">
+            <h1>Happy Valentine's Day, My Love</h1>
+            <p>From the day we met to forever, my heart belongs to you.</p>
+            <a href="#our-story" class="btn">Our Story</a>
+        </div>
+    </section>
 
-  <script>
-    function nextPage() {
-      window.location.href = "yes.html";
-    }
+    <!-- Our Story -->
+    <section id="our-story">
+        <h2>Our Story</h2>
+        <p>It all began on June 21, 2024...</p>
+        <div class="timeline">
+            <div class="event">
+                <h3>Our First Meeting</h3>
+                <p>... and everything changed.</p>
+            </div>
+            <div class="event">
+                <h3>Long Distance, Closer Hearts</h3>
+                <p>No distance can separate two hearts that truly care.</p>
+            </div>
+            <div class="event">
+                <h3>Our First Valentine's Day</h3>
+                <p>And this is just the beginning...</p>
+            </div>
+        </div>
+    </section>
 
-    function moveButton() {
-      const noButton = document.getElementById('noButton');
-      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-      noButton.style.position = 'absolute';
-      noButton.style.left = `${x}px`;
-      noButton.style.top = `${y}px`;
-    }
-  </script>
+    <!-- Movie Moments -->
+    <section id="movie-moments">
+        <h2>Movie Moments</h2>
+        <p>Just like Carl and Ellie in 'UP' and Sebastian and Mia in 'La La Land', our love is timeless.</p>
+    </section>
+
+    <!-- Ending Section -->
+    <section class="ending">
+        <h2>Forever Yours</h2>
+        <p>Happy Valentine's Day! I can't wait to create more memories with you.</p>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
