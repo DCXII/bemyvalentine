@@ -1,77 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- GSAP Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <!-- Splide Carousel Library -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js" defer></script>
-</head>
+    <link rel="stylesheet" href="./styles.css">
+    <title>Valentine's Day Surprise</title>
+</head> 
 <body>
-    <!-- Animated Hero Section -->
-    <section class="hero">
-        <div class="overlay">
-            <h1 class="animate-text">Happy Valentine's Day, My Love</h1>
-            <p class="animate-text">From the day we met to forever, my heart belongs to you.</p>
-            <a href="#our-story" class="btn">Our Story</a>
+    <div class="container">
+        <div>
+            <h1 class="header_text">Will You Be My Valentine?</h1>
         </div>
-    </section>
-
-    <!-- Our Story - Interactive Timeline -->
-    <section id="our-story">
-        <h2>Our Story</h2>
-        <div class="timeline">
-            <div class="event" onclick="showMemory(1)">
-                <h3>Our First Meeting</h3>
-                <p>Click to reveal the memory...</p>
-            </div>
-            <div class="event" onclick="showMemory(2)">
-                <h3>Long Distance, Closer Hearts</h3>
-                <p>Click to reveal the memory...</p>
-            </div>
-            <div class="event" onclick="showMemory(3)">
-                <h3>Our First Valentine's Day</h3>
-                <p>Click to reveal the memory...</p>
-            </div>
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/l0ExncehJzexFpRHq/giphy.gif" alt="Cute animated illustration">
         </div>
-        <div id="memory-modal" class="modal">
-            <span class="close" onclick="closeMemory()">&times;</span>
-            <img id="memory-image" src="" alt="Memory">
-            <p id="memory-text"></p>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Love Notes Slider -->
-    <section id="love-notes">
-        <h2>Love Notes</h2>
-        <div class="splide">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide">I love you more each day.</li>
-                    <li class="splide__slide">Distance means nothing when someone means everything.</li>
-                    <li class="splide__slide">You are my adventure in life.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ending Section -->
-    <section class="ending">
-        <h2>Forever Yours</h2>
-        <button onclick="celebrate()">Happy Valentine's Day!</button>
-        <canvas id="confetti-canvas"></canvas>
-    </section>
-
-    <!-- Background Music -->
-    <audio id="bg-music" loop>
-        <source src="music/background-music.mp3" type="audio/mp3">
-    </audio>
-    <button class="music-control" onclick="toggleMusic()">🎵</button>
-
-    <script src="script.js"></script>
-</body>
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+        
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 85;
+            var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight) - 48;
+            document.getElementById('noButton').style.left = `${x}px`;
+            document.getElementById('noButton').style.top = `${y}px`;
+        }
+    </script>
+</body> 
 </html>
