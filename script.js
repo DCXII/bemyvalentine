@@ -1,3 +1,23 @@
+function checkName() {
+    const nameInput = document.getElementById('nameInput').value.trim();
+    const errorMessage = document.getElementById('errorMessage');
+    
+    if (nameInput.toLowerCase() === "anna shaji") {
+        localStorage.setItem('isLoggedIn', true);
+        window.location.href = "index.html";
+    } else {
+        errorMessage.textContent = "Nope, only my Valentine can enter!";
+        errorMessage.style.display = "block";
+    }
+}
+
+// Prevent access to the game if not logged in
+window.addEventListener('load', () => {
+    if (window.location.pathname.endsWith('index.html') && localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = "login.html";
+    }
+});
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
