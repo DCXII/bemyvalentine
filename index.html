@@ -5,48 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Valentine's Day</title>
     <link rel="stylesheet" href="style.css">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <!-- Splide Carousel Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js" defer></script>
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- Animated Hero Section -->
     <section class="hero">
         <div class="overlay">
-            <h1>Happy Valentine's Day, My Love</h1>
-            <p>From the day we met to forever, my heart belongs to you.</p>
+            <h1 class="animate-text">Happy Valentine's Day, My Love</h1>
+            <p class="animate-text">From the day we met to forever, my heart belongs to you.</p>
             <a href="#our-story" class="btn">Our Story</a>
         </div>
     </section>
 
-    <!-- Our Story -->
+    <!-- Our Story - Interactive Timeline -->
     <section id="our-story">
         <h2>Our Story</h2>
-        <p>It all began on June 21, 2024...</p>
         <div class="timeline">
-            <div class="event">
+            <div class="event" onclick="showMemory(1)">
                 <h3>Our First Meeting</h3>
-                <p>... and everything changed.</p>
+                <p>Click to reveal the memory...</p>
             </div>
-            <div class="event">
+            <div class="event" onclick="showMemory(2)">
                 <h3>Long Distance, Closer Hearts</h3>
-                <p>No distance can separate two hearts that truly care.</p>
+                <p>Click to reveal the memory...</p>
             </div>
-            <div class="event">
+            <div class="event" onclick="showMemory(3)">
                 <h3>Our First Valentine's Day</h3>
-                <p>And this is just the beginning...</p>
+                <p>Click to reveal the memory...</p>
             </div>
+        </div>
+        <div id="memory-modal" class="modal">
+            <span class="close" onclick="closeMemory()">&times;</span>
+            <img id="memory-image" src="" alt="Memory">
+            <p id="memory-text"></p>
         </div>
     </section>
 
-    <!-- Movie Moments -->
-    <section id="movie-moments">
-        <h2>Movie Moments</h2>
-        <p>Just like Carl and Ellie in 'UP' and Sebastian and Mia in 'La La Land', our love is timeless.</p>
+    <!-- Love Notes Slider -->
+    <section id="love-notes">
+        <h2>Love Notes</h2>
+        <div class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">I love you more each day.</li>
+                    <li class="splide__slide">Distance means nothing when someone means everything.</li>
+                    <li class="splide__slide">You are my adventure in life.</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <!-- Ending Section -->
     <section class="ending">
         <h2>Forever Yours</h2>
-        <p>Happy Valentine's Day! I can't wait to create more memories with you.</p>
+        <button onclick="celebrate()">Happy Valentine's Day!</button>
+        <canvas id="confetti-canvas"></canvas>
     </section>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="music/background-music.mp3" type="audio/mp3">
+    </audio>
+    <button class="music-control" onclick="toggleMusic()">🎵</button>
 
     <script src="script.js"></script>
 </body>
