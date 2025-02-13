@@ -1,47 +1,80 @@
-// GSAP Animations
-gsap.to('.animate-text', {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    stagger: 0.3,
-    ease: 'power2.out'
-});
-window.onload = () => {
-    confetti.start();
-    setTimeout(() => confetti.stop(), 5000);
-};
-// Timeline Interaction
-const memories = [
-    { img: 'images/event1.jpg', text: 'Our first meeting... and everything changed.' },
-    { img: 'images/event2.jpg', text: 'Long distance but closer hearts.' },
-    { img: 'images/event3.jpg', text: 'Our first Valentine\'s Day!' }
-];
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = 800;
+canvas.height = 600;
 
-function showMemory(index) {
-    document.getElementById('memory-image').src = memories[index - 1].img;
-    document.getElementById('memory-text').textContent = memories[index - 1].text;
-    document.getElementById('memory-modal').style.display = 'block';
-}
+let hearts = [];
+let basket = { x: 350, y: 550, width: 100, height: 50 };
+let score = 0;
+let gameInterval;
 
-function closeMemory() {
-    document.getElementById('memory-modal').style.display = 'none';
-}
+class Heart {
+    constructor() {
+        this.x = Math.random() * (canvas.width - 50);
+        this.y = -50;
+        this.width = 50;
+        this.height = 50;
+        this.speed = 2 + Math.random() * 3;
+    }
 
-// Background Music Control
-const music = document.getElementById('bg-music');
-function toggleMusic() {
-    if (music.paused) {
-        music.play();
-    } else {
-        music.pause();
+    draw() {
+        const img = new Image();
+        img.src = './images/heart.png';
+        ctx.drawImage(img, this.x, this.y, this.width, this.height);
+    }
+
+    update() {
+        this.y += this.speed;
     }
 }
 
-// Love Notes Slider
-document.addEventListener('DOMContentLoaded', () => {
-    new Splide('.splide', {
-        type: 'loop',
-        autoplay: true,
-        interval: 3000
-    }).mount();
+function drawBasket() {
+    const img = new Image();
+    img.src = './images/basket.png';
+    ctx.drawImage(img, basket.x, basket.y, basket.width, basket.height);
+}
+
+function startGame() {
+    document.getElementById('startButton').style.display = 'none';
+    gameInterval = setInterval(updateGame, 20);
+}
+
+function updateGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (Math.random() < 0.02) {
+        hearts.push(new Heart());
+    }
+
+    hearts.forEach((heart, index) => {
+        heart.update();
+        heart.draw();
+
+        // Collision detection
+        if (
+            heart.x < basket.x + basket.width &&
+            heart.x + heart.width > basket.x &&
+            heart.y < basket.y + basket.height &&
+            heart.y + heart.height > basket.y
+        ) {
+            hearts.splice(index, 1);
+            score++;
+            document.getElementById('score').innerText = score;
+            if (score >= 10) {
+                clearInterval(gameInterval);
+                window.location.href = "yes.html";
+            }
+        }
+
+        if (heart.y > canvas.height) {
+            hearts.splice(index, 1);
+        }
+    });
+
+    drawBasket();
+}
+
+window.addEventListener('mousemove', (e) => {
+    const canvasPosition = canvas.getBoundingClientRect();
+    basket.x = e.clientX - canvasPosition.left - basket.width / 2;
 });
