@@ -3,186 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will You Be My Valentine?</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      background: #ffdde1;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .letter {
-      background: white;
-      padding: 2em;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 111, 97, 0.3);
-      max-width: 80%;
-      position: relative;
-      z-index: 1;
-    }
-
-    .letter h1 {
-      font-size: 2.5em;
-      color: #ff6f61;
-      margin: 0 0 0.5em 0;
-    }
-
-    .letter p {
-      font-size: 1.2em;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .valentine-question {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 2em;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 111, 97, 0.3);
-      z-index: 2;
-    }
-
-    .valentine-question h1 {
-      font-size: 3em;
-      color: #ff6f61;
-      margin: 0 0 1em 0;
-    }
-
-    .buttons button {
-      padding: 15px 30px;
-      font-size: 1.5em;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      transition: transform 0.2s;
-    }
-
-    .buttons button.yes {
-      background: #ff6f61;
-      color: white;
-    }
-
-    .buttons button.no {
-      background: #fff;
-      color: #ff6f61;
-      border: 2px solid #ff6f61;
-    }
-
-    .grand-finale {
-      display: none;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: #ffdde1;
-      text-align: center;
-      z-index: 3;
-    }
-
-    .grand-finale h1 {
-      font-size: 4em;
-      color: #ff6f61;
-      margin-top: 20vh;
-    }
-
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #ff6f61;
-      border-radius: 50%;
-      animation: confetti-fall 2s ease-out forwards;
-    }
-
-    @keyframes confetti-fall {
-      0% { transform: translateY(-100vh) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(360deg); }
-    }
-  </style>
+  <title>Will You Go Out With Me?</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <!-- Love Letter -->
-  <div class="letter" id="letter">
-    <h1>To My Love 💖</h1>
-    <p>
-      From the moment I met you, my heart knew it had found its home. Your smile lights up my world, and your love fills my life with joy. Every day with you is a blessing, and I can't imagine my life without you in it.
-    </p>
-    <p>
-      You are my everything, and I am so grateful to have you by my side. Will you make me the happiest person in the world and be my Valentine?
-    </p>
-  </div>
-
-  <!-- Valentine's Question -->
-  <div class="valentine-question" id="valentineQuestion">
-    <h1>Will you be my Valentine?</h1>
+  <div class="container">
+    <div>
+      <h1 class="header_text">Do you wanna go out with me?</h1>
+      <h1 class="header_text">Are you free tomorrow?</h1>
+    </div>
+    <div class="gif_container">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2JiZDR0a3lvMWF4OG8yc3p6Ymdvd3g2d245amdveDhyYmx6eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animated illustration">
+    </div>
     <div class="buttons">
-      <button class="yes" onclick="showGrandFinale()">YES!</button>
-      <button class="no" onclick="playfulNo()">...No?</button>
+      <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+      <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
     </div>
   </div>
 
-  <!-- Grand Finale -->
-  <div class="grand-finale" id="grandFinale">
-    <h1>Happy Valentine's Day! 💘</h1>
-  </div>
-
   <script>
-    const letter = document.getElementById('letter');
-    const valentineQuestion = document.getElementById('valentineQuestion');
-
-    // Add confetti on click
-    document.body.addEventListener('click', (e) => {
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.left = e.clientX + 'px';
-      confetti.style.top = e.clientY + 'px';
-      document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 2000);
-    });
-
-    // Show Valentine's question after 10 seconds
-    setTimeout(() => {
-      letter.style.display = 'none';
-      valentineQuestion.style.display = 'block';
-    }, 10000);
-
-    // Valentine's Question
-    function showGrandFinale() {
-      valentineQuestion.style.display = 'none';
-      const finale = document.getElementById('grandFinale');
-      finale.style.display = 'block';
-
-      // Add exploding hearts
-      for (let i = 0; i < 50; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'confetti';
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.style.animationDelay = Math.random() * 1 + 's';
-        finale.appendChild(heart);
-      }
-
-      // Play music (replace with your "UP" tune link)
-      const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2853/2853-preview.mp3');
-      audio.play();
+    function nextPage() {
+      window.location.href = "yes.html";
     }
 
-    function playfulNo() {
-      alert("Nice try! Let's try that again... 😉");
-      valentineQuestion.style.display = 'none';
-      letter.style.display = 'block';
+    function moveButton() {
+      const noButton = document.getElementById('noButton');
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
     }
   </script>
 </body>
