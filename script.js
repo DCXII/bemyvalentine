@@ -1,10 +1,10 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 800;
-canvas.height = 600;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight * 0.6;
 
 let hearts = [];
-let basket = { x: 350, y: 550, width: 100, height: 50 };
+let basket = { x: canvas.width / 2 - 50, y: canvas.height - 70, width: 100, height: 50 };
 let score = 0;
 let gameInterval;
 
@@ -19,7 +19,7 @@ class Heart {
 
     draw() {
         const img = new Image();
-        img.src = 'images/heart.png';
+        img.src = './images/heart.png';
         ctx.drawImage(img, this.x, this.y, this.width, this.height);
     }
 
@@ -30,7 +30,7 @@ class Heart {
 
 function drawBasket() {
     const img = new Image();
-    img.src = 'images/basket.png';
+    img.src = './images/basket.png';
     ctx.drawImage(img, basket.x, basket.y, basket.width, basket.height);
 }
 
@@ -49,8 +49,6 @@ function updateGame() {
     hearts.forEach((heart, index) => {
         heart.update();
         heart.draw();
-
-        // Collision detection
         if (
             heart.x < basket.x + basket.width &&
             heart.x + heart.width > basket.x &&
@@ -65,16 +63,11 @@ function updateGame() {
                 window.location.href = "yes.html";
             }
         }
-
-        if (heart.y > canvas.height) {
-            hearts.splice(index, 1);
-        }
     });
 
     drawBasket();
 }
 
-window.addEventListener('mousemove', (e) => {
-    const canvasPosition = canvas.getBoundingClientRect();
-    basket.x = e.clientX - canvasPosition.left - basket.width / 2;
+canvas.addEventListener('touchmove', (e) => {
+    basket.x = e.touches[0].clientX - basket.width / 2;
 });
