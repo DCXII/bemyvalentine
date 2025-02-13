@@ -3,6 +3,18 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight * 0.6;
 
+const music = document.getElementById('bg-music');
+let isPlaying = false;
+
+function toggleMusic() {
+    if (isPlaying) {
+        music.pause();
+    } else {
+        music.play();
+    }
+    isPlaying = !isPlaying;
+}
+
 let hearts = [];
 let basket = { x: canvas.width / 2 - 50, y: canvas.height - 70, width: 100, height: 50 };
 let score = 0;
