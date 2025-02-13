@@ -7,7 +7,7 @@ gsap.to('.animate-text', {
     ease: 'power2.out'
 });
 
-// Timeline Interactions
+// Timeline Interaction
 const memories = [
     { img: 'images/event1.jpg', text: 'Our first meeting... and everything changed.' },
     { img: 'images/event2.jpg', text: 'Long distance but closer hearts.' },
